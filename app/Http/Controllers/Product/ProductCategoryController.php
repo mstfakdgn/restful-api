@@ -30,18 +30,6 @@ class ProductCategoryController extends ApiController
      */
     public function store(Request $request, Product $product)
     {
-        // $rules = [
-        //     'name' => 'required',
-        //     'description' => 'required',
-        // ];
-
-        // $this->validate($request, $rules);
-
-        // $data = $request->all();
-
-        // $category = Category::create($data);
-
-        // return $this->showOne($category);
     }
 
     /**
