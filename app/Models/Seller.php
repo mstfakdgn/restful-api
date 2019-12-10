@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use App\Scope\SellerScope;
+use App\Transformers\SellerTransformer;
 
 class Seller extends User
 {
+    public $transformer = SellerTransformer::class;
+
     protected static function boot()
     {
         parent::boot();
