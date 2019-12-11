@@ -46,10 +46,10 @@ trait ApiResponser
         return $this->successResponse($instance, $code);
     }
 
-    protected function filterData(Collection $collection)
+    protected function filterData(Collection $collection, $transformer)
     {
         foreach (request()->query() as $query => $value) {
-            $attribute = $this->originalAttributeUser($query);
+            $attribute = $transformer::originalAttributeUser($query);
 
             if (isset($attribute, $value)) {
                 $collection = $collection->where($attribute, $value);
@@ -67,7 +67,7 @@ trait ApiResponser
     public function sortData(Collection $collection, $transformer)
     {
         if (request()->has('sort_by')) {
-            $attribute = $this->originalAttributeUser(request()->sort_by);
+            $attribute = $transformer::originalAttributeUser(request()->sort_by);
 
             $collection = $collection->sortBy->{$attribute};
         }
@@ -80,22 +80,6 @@ trait ApiResponser
         $transformation = fractal($data, new $transformer());
 
         return $transformation->toArray();
-    }
-
-    public function originalAttributeUser($index)
-    {
-        $attributes = [
-            'identifier' => 'id',
-            'name' => 'name',
-            'email' => 'email',
-            'isVerified' => 'verified',
-            'isAdmin' => 'admin',
-            'creationDate' => 'created_at',
-            'lastChange' => 'updated_at',
-            'deletedDate' => 'deleted_at',
-        ];
-
-        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 
     public function paginate(Collection $collection)
