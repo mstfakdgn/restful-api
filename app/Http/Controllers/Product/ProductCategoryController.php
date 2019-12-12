@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class ProductCategoryController extends ApiController
 {
+    public function __construct()
+    {
+        // parent::__construct();
+        $this->middleware('client.credentials')->only(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,17 +25,6 @@ class ProductCategoryController extends ApiController
         $categories = $product->categories;
 
         return $this->showAll($categories);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Product $product)
-    {
     }
 
     /**
