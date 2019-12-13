@@ -13,11 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <passport-token-component></passport-token-component>
-                        <passport-clients></passport-clients>
                         <passport-authorized-clients></passport-authorized-clients>
-
-
                 </div>
             </div>
         </div>

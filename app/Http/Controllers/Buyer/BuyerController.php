@@ -9,7 +9,9 @@ class BuyerController extends ApiController
 {
     public function __construct()
     {
-        parent::__construct();
+        // parent::__construct();
+        // policy
+        // $this->middleware('can:view,buyer')->only(['index', 'show']);
     }
 
     /**

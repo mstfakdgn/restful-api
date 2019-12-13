@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/my-tokens', 'HomeController@getAuthorizedClients')->name('personal-authorized-clients');
+Route::get('/home/authorized-clients', 'HomeController@getClients')->name('personal-clients');
+Route::get('/home/clients', 'HomeController@getTokens')->name('personal-tokens');

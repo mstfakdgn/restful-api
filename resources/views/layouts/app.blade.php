@@ -43,6 +43,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            @if (Auth::check())
+                                <li><a href="{{ route('personal-tokens')}}">My Tokens</a></li>
+                                <li><a href="{{ route('personal-clients')}}">My Client</a></li>
+                                <li><a href="{{ route('personal-authorized-clients')}}">My Authorized Client</a></li>
+                            @endif
                             {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

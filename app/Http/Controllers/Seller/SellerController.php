@@ -10,7 +10,7 @@ class SellerController extends ApiController
 {
     public function __construct()
     {
-        parent::__construct();
+        $this->middleware('can:view,seller')->only('show');
     }
 
     /**
